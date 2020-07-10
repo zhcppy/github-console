@@ -8,10 +8,11 @@ package main
 import (
 	"context"
 	"fmt"
+	"runtime"
+
 	"github.com/spf13/cobra"
 	"github.com/zhcppy/github-console/console"
 	"github.com/zhcppy/github-console/github"
-	"runtime"
 )
 
 // application's name
@@ -19,7 +20,7 @@ const name = "github-console"
 
 var (
 	// application's version string
-	Version = "v0.0.1"
+	Version = "v0.0.0"
 	// git commit hash
 	Commit = "nil"
 )
@@ -46,6 +47,7 @@ var rootCmd = &cobra.Command{
 
 var versionCmd = &cobra.Command{
 	Use:           "version",
+	Aliases:       []string{"v"},
 	Short:         "Print the version number of " + name,
 	SilenceErrors: true,
 	Run: func(cmd *cobra.Command, args []string) {
